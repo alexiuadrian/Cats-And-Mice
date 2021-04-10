@@ -41,9 +41,8 @@ def write_to_file(folder, filename, content):
 
 names = import_files(input_folder)
 
-print(names)
 
-write_to_file(output_folder, names[0], "Muie Ionescu")
+
 
 # End of timer
 timer_end = time.perf_counter()
