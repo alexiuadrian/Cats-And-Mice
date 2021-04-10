@@ -5,6 +5,7 @@ Presupunem ca avem costul de mutare al unui bloc egal cu indicele in alfabet, cu
 """
 
 import copy
+import numpy as np
 
 #informatii despre un nod din arborele de parcurgere (nu din graful initial)
 class NodParcurgere:
@@ -77,42 +78,31 @@ class NodParcurgere:
 
 class Graph: #graful problemei
 	def __init__(self, nume_fisier):
+		self.no_of_sol = 0
 
 		def parseFile(file_content):
 			lines_of_content = file_content.split('\n')
 
 			n = len(lines_of_content) - 1
 			# Minimum number of mices that have to get out of the map
-			no_of_sol = int(lines_of_content[0])
-			matrix = np.zeros((n, n))
+			self.no_of_sol = int(lines_of_content[0])
+			matrix = np.chararray((n, n))
 
-			for line_index in range(lines_of_content):
+			for line_index in range(len(lines_of_content)):
 				elements = lines_of_content[line_index].split()
 
-				for element_index in range(elements):
+				for element_index in range(len(elements)):
 					matrix[line_index][element_index] = elements[element_index]
-
-
-
-		f = open(nume_fisier, 'r') 
-
-		continutFisier=f.read()
-		siruriStari=continutFisier.split("stari_finale")
-		self.start=obtineStive(siruriStari[0])
-		self.scopuri=[]
-		siruriStariFinale=siruriStari[1].strip().split("---")
-		for scop in siruriStariFinale:
-			self.scopuri.append(obtineStive(scop))
-		print("Stare Initiala:", self.start)
-		print("Stari finale posibile:",self.scopuri)
-		input()
 			
+			return matrix
 
 		f = open(nume_fisier, 'r') 
 
-		continutFisier=f.read()
+		continutFisier = f.read()
 
-		self.start = 
+		self.start = parseFile(continutFisier)
+		print("Stare Initiala:", self.start)
+		input()
 
 	def testeaza_scop(self, nodCurent):
 		return nodCurent.info in self.scopuri
@@ -228,10 +218,10 @@ gr=Graph("input.txt")
 #print("Solutii obtinute cu breadth first:")
 #breadth_first(gr, nrSolutiiCautate=3)
 
-print("\n\n##################\nSolutii obtinute cu A*:")
-print("\nObservatie: stivele sunt afisate pe orizontala, cu baza la stanga si varful la dreapta.")
-nrSolutiiCautate=3
-a_star(gr, nrSolutiiCautate=3,tip_euristica="euristica nebanala")
+# print("\n\n##################\nSolutii obtinute cu A*:")
+# print("\nObservatie: stivele sunt afisate pe orizontala, cu baza la stanga si varful la dreapta.")
+# nrSolutiiCautate=3
+# a_star(gr, nrSolutiiCautate=3,tip_euristica="euristica nebanala")
 
 
 """
