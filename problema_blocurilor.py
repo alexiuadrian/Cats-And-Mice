@@ -87,23 +87,20 @@ class Graph: #graful problemei
 			m = len(lines_of_content[1].split(' ')) - 1
 			# Minimum number of mices that have to get out of the map
 			self.no_of_sol = int(lines_of_content[0])
-			matrix = np.chararray((n, m))
+			elements_list = []
 
-			# matrix = matrix.decode("utf-8")
-			for line_index in range(1, n):
+			for line_index in range(1, n + 1):
 				elements = lines_of_content[line_index].split()
-				print(elements)
-				# for element_index in range(m):
-				# 	matrix[line_index - 1][element_index] = elements[element_index]
+				elements_list.append(elements)
 			
-			return matrix
+			return elements_list
 
 		f = open(nume_fisier, 'r') 
 
 		continutFisier = f.read()
 
 		self.start = parseFile(continutFisier)
-		# print("Stare Initiala: ", self.start)
+		print("Stare Initiala: ", self.start)
 		input()
 
 	def testeaza_scop(self, nodCurent):
